@@ -1,10 +1,6 @@
-import { News } from "../types";
 import { useEffect, useState } from "react";
-import { Button, Card } from "react-bootstrap";
-
-interface NewsProps {
-  news: News;
-}
+import { Card } from "react-bootstrap";
+import { News } from "../types";
 
 const SingleOpen = () => {
   const [single, setSingle] = useState<News[]>([]);
@@ -16,11 +12,12 @@ const SingleOpen = () => {
   const fetchNews = async () => {
     try {
       let response = await fetch(
-        `https://api.spaceflightnewsapi.net/v3/articles/17542`
+        `https://api.spaceflightnewsapi.net/v3/articles/17549`
       );
       if (response.ok) {
         let data = await response.json();
         setSingle(data);
+        console.log(data);
       } else {
         console.log("error from the server");
       }

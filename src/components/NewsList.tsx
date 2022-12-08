@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { News } from "../types";
+import Header from "./Header";
 import NewsSingle from "./NewsSingle";
 
 const NewsList = () => {
@@ -27,6 +28,7 @@ const NewsList = () => {
 
   return (
     <>
+      <Header />
       <h1>Latest Releases</h1>
       {latestNews.map((news) => (
         <NewsSingle news={news} key={news.id} />
