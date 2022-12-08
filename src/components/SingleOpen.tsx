@@ -1,5 +1,10 @@
 import { News } from "../types";
 import { useEffect, useState } from "react";
+import { Button, Card } from "react-bootstrap";
+
+interface NewsProps {
+  news: News;
+}
 
 const SingleOpen = () => {
   const [single, setSingle] = useState<News[]>([]);
@@ -11,11 +16,11 @@ const SingleOpen = () => {
   const fetchNews = async () => {
     try {
       let response = await fetch(
-        "https://api.spaceflightnewsapi.net/v3/articles"
+        `https://api.spaceflightnewsapi.net/v3/articles/17542`
       );
       if (response.ok) {
         let data = await response.json();
-        setLatestNews(data);
+        setSingle(data);
       } else {
         console.log("error from the server");
       }
@@ -26,7 +31,14 @@ const SingleOpen = () => {
 
   return (
     <>
-      <h1>h1</h1>
+      <Card style={{ width: "18rem" }}>
+        <Card.Img variant="top" src="imageUrl" />
+        <Card.Body>
+          <Card.Title>title</Card.Title>
+          <Card.Text>summary</Card.Text>
+          <Card.Text>published</Card.Text>
+        </Card.Body>
+      </Card>
     </>
   );
 };
